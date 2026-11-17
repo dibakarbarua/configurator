@@ -211,7 +211,7 @@ llm-optimizer exposes both server- and client-side parameters so you can experim
 
 ### Supported GPUs
 
-H100, H200, A100, L20, L40, B100, B200 with accurate TFLOPS specifications.
+H100, H200, A100, L20, L40, B100, B200, B300 with accurate TFLOPS specifications.
 
 ## Development
 

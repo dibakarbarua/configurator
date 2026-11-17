@@ -4,7 +4,6 @@ Data compiled from official NVIDIA specifications and technical documentation.
 """
 
 # GPU specifications from official NVIDIA sources and datasheets
-# Researched and verified from NVIDIA official documentation (December 2024)
 GPU_SPECS = {
     # NVIDIA Hopper Architecture GPUs
     "H100": {
@@ -12,6 +11,8 @@ GPU_SPECS = {
         "FP8_TFLOPS": 1978.0,  # 4th gen Tensor Cores with FP8 support
         "Memory_Bandwidth_GBs": 3350,  # 3.35 TB/s HBM3 memory bandwidth
         "VRAM_GB": 80,
+        "Num_SMs": 132,
+        "SMEM_KB": 228,  # Max configurable shared memory per SM (256 KB L1/SMEM)
         "Architecture": "Hopper",
         "Memory_Type": "HBM3",
     },
@@ -20,6 +21,8 @@ GPU_SPECS = {
         "FP8_TFLOPS": 1978.0,  # Official NVIDIA specification
         "Memory_Bandwidth_GBs": 4800,  # 4.8 TB/s HBM3e memory bandwidth
         "VRAM_GB": 141,
+        "Num_SMs": 132,
+        "SMEM_KB": 228,  # Max configurable shared memory per SM (256 KB L1/SMEM)
         "Architecture": "Hopper",
         "Memory_Type": "HBM3e",
     },
@@ -29,6 +32,8 @@ GPU_SPECS = {
         "FP8_TFLOPS": None,  # Not supported on Ampere architecture
         "Memory_Bandwidth_GBs": 2039,  # 2.039 TB/s HBM2e memory bandwidth
         "VRAM_GB": 80,
+        "Num_SMs": 108,
+        "SMEM_KB": 164,  # Max configurable shared memory per SM (192 KB L1/SMEM)
         "Architecture": "Ampere",
         "Memory_Type": "HBM2e",
     },
@@ -37,6 +42,8 @@ GPU_SPECS = {
         "FP8_TFLOPS": None,  # Not supported on Ampere architecture
         "Memory_Bandwidth_GBs": 1555,  # 1.555 TB/s HBM2 memory bandwidth
         "VRAM_GB": 40,
+        "Num_SMs": 108,
+        "SMEM_KB": 164,  # Max configurable shared memory per SM (192 KB L1/SMEM)
         "Architecture": "Ampere",
         "Memory_Type": "HBM2",
     },
@@ -46,6 +53,8 @@ GPU_SPECS = {
         "FP8_TFLOPS": 239.0,  # Ada Lovelace supports FP8
         "Memory_Bandwidth_GBs": 864,  # GDDR6 memory bandwidth
         "VRAM_GB": 48,
+        "Num_SMs": 92,
+        "SMEM_KB": 100,  # Max configurable shared memory per SM (128 KB L1/SMEM)
         "Architecture": "Ada Lovelace",
         "Memory_Type": "GDDR6",
     },
@@ -54,24 +63,40 @@ GPU_SPECS = {
         "FP8_TFLOPS": 362.0,  # Ada Lovelace 4th gen Tensor Cores
         "Memory_Bandwidth_GBs": 864,  # GDDR6 memory bandwidth
         "VRAM_GB": 48,
+        "Num_SMs": 142,
+        "SMEM_KB": 100,  # Max configurable shared memory per SM (128 KB L1/SMEM)
         "Architecture": "Ada Lovelace",
         "Memory_Type": "GDDR6",
     },
-    # NVIDIA Blackwell Architecture GPUs (Future)
+    # NVIDIA Blackwell Architecture GPUs
     "B100": {
         "FP16_TFLOPS": 1800.0,  # Official NVIDIA specification (dense)
-        "FP8_TFLOPS": 3500.0,  # 5th gen Tensor Cores
+        "FP8_TFLOPS": 3500.0,  # 5th gen Tensor Cores (dense)
         "Memory_Bandwidth_GBs": 8000,  # 8 TB/s HBM3e memory bandwidth
-        "VRAM_GB": 192,  # 2x96GB HBM3e stacks
+        "VRAM_GB": 192,  # 8x24GB HBM3e stacks
+        "Num_SMs": 144,
+        "SMEM_KB": 228,  # Max configurable shared memory per SM (256 KB L1/SMEM)
         "Architecture": "Blackwell",
         "Memory_Type": "HBM3e",
     },
     "B200": {
         "FP16_TFLOPS": 2250.0,  # Official NVIDIA specification (dense)
-        "FP8_TFLOPS": 4500.0,  # 5th gen Tensor Cores enhanced
+        "FP8_TFLOPS": 4500.0,  # 5th gen Tensor Cores (dense)
         "Memory_Bandwidth_GBs": 8000,  # 8 TB/s HBM3e memory bandwidth
-        "VRAM_GB": 192,  # 2x96GB HBM3e stacks
+        "VRAM_GB": 192,  # 8x24GB HBM3e stacks
+        "Num_SMs": 148,
+        "SMEM_KB": 228,  # Max configurable shared memory per SM (256 KB L1/SMEM)
         "Architecture": "Blackwell",
+        "Memory_Type": "HBM3e",
+    },
+    "B300": {
+        "FP16_TFLOPS": 2250.0,  # Official NVIDIA Blackwell Ultra spec (dense)
+        "FP8_TFLOPS": 4500.0,  # 5th gen Tensor Cores (dense)
+        "Memory_Bandwidth_GBs": 8000,  # 8 TB/s HBM3e memory bandwidth
+        "VRAM_GB": 288,  # 8x36GB (12-Hi) HBM3e stacks
+        "Num_SMs": 160,
+        "SMEM_KB": 228,  # Max configurable shared memory per SM (256 KB L1/SMEM)
+        "Architecture": "Blackwell Ultra",
         "Memory_Type": "HBM3e",
     },
 }

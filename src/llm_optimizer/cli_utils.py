@@ -211,7 +211,9 @@ def detect_gpu_type():
 
         # Map GPU names to our standardized names
         gpu_mapping = {
+            "NVIDIA B300": "B300",
             "NVIDIA B200": "B200",
+            "NVIDIA B100": "B100",
             "NVIDIA H100": "H100",
             "NVIDIA H200": "H200",
             "NVIDIA A100": "A100",

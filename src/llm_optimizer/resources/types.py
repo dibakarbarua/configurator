@@ -13,6 +13,8 @@ class GPUResources:
     num_gpus: int
     gpu_name: str
     precision: str
+    num_sms_per_gpu: int = 0
+    smem_per_sm_bytes: int = 0
 
     @property
     def total_tflops(self) -> float:
@@ -28,6 +30,16 @@ class GPUResources:
     def total_bandwidth_bytes_per_sec(self) -> int:
         """Total bandwidth in bytes/sec across all GPUs."""
         return self.per_gpu_bandwidth_bytes_per_sec * self.num_gpus
+
+    @property
+    def total_sms(self) -> int:
+        """Total Streaming Multiprocessors across all GPUs."""
+        return self.num_sms_per_gpu * self.num_gpus
+
+    @property
+    def per_gpu_smem_bytes(self) -> int:
+        """Total shared memory in bytes per GPU."""
+        return self.num_sms_per_gpu * self.smem_per_sm_bytes
 
 
 @dataclass

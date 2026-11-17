@@ -49,6 +49,54 @@ class TestGPUResources(unittest.TestCase):
         self.assertEqual(resources.total_memory_bytes, 160 * 1024**3)
         self.assertEqual(resources.total_bandwidth_bytes_per_sec, 4000 * 1024**3)
 
+    def test_sm_and_smem_properties(self):
+        """Test SM count and SMEM property calculations."""
+        resources = GPUResources(
+            per_gpu_tflops=2250.0,
+            per_gpu_memory_bytes=288 * 1024**3,
+            per_gpu_bandwidth_bytes_per_sec=8000 * 1024**3,
+            num_gpus=8,
+            gpu_name="B300",
+            precision="fp8",
+            num_sms_per_gpu=160,
+            smem_per_sm_bytes=228 * 1024,
+        )
+
+        self.assertEqual(resources.total_sms, 1280)
+        self.assertEqual(resources.per_gpu_smem_bytes, 160 * 228 * 1024)
+
+
+class TestGPUSpecs(unittest.TestCase):
+    """Test GPU_SPECS predefined specifications."""
+
+    def test_all_gpus_have_sms_and_smem(self):
+        """Verify all predefined GPUs include Num_SMs and SMEM_KB."""
+        from llm_optimizer.predefined.gpus import GPU_SPECS, get_gpu_specs
+
+        expected_gpus = {
+            "H100",
+            "H200",
+            "A100",
+            "A100-40GB",
+            "L20",
+            "L40",
+            "B100",
+            "B200",
+            "B300",
+        }
+        self.assertTrue(expected_gpus.issubset(set(GPU_SPECS.keys())))
+
+        for gpu_name, specs in GPU_SPECS.items():
+            self.assertIn("Num_SMs", specs, f"{gpu_name} missing Num_SMs")
+            self.assertIn("SMEM_KB", specs, f"{gpu_name} missing SMEM_KB")
+            self.assertGreater(specs["Num_SMs"], 0)
+            self.assertGreater(specs["SMEM_KB"], 0)
+
+        b300 = get_gpu_specs("b300")
+        self.assertEqual(b300["VRAM_GB"], 288)
+        self.assertEqual(b300["Num_SMs"], 160)
+        self.assertEqual(b300["SMEM_KB"], 228)
+
 
 class TestMemoryBreakdown(unittest.TestCase):
     """Test MemoryBreakdown data class."""

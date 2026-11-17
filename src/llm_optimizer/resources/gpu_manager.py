@@ -47,7 +47,9 @@ class GPUResourceManager:
             per_gpu_bandwidth_bytes_per_sec=int(gpu_specs["Memory_Bandwidth_GBs"] * 1024**3),  # Convert GB/s to bytes/s
             num_gpus=num_gpus,
             gpu_name=gpu_name,
-            precision=precision
+            precision=precision,
+            num_sms_per_gpu=gpu_specs.get("Num_SMs", 0),
+            smem_per_sm_bytes=int(gpu_specs.get("SMEM_KB", 0) * 1024),  # Convert KB to bytes
         )
 
     def calculate_memory_limits(
