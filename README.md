@@ -24,6 +24,8 @@ The Python package and CLI remain named `llm-optimizer`. The imported code retai
 its [Apache-2.0 license](LICENSE) and upstream attribution. Both the imported fork's
 history and Configurator's initial repository commit are retained.
 
+Refer to [PERFORMANCE.md](https://github.com/dibakarbarua/configurator/blob/main/PERFORMANCE.md) for details on execution semantics and usage.
+
 ## Existing LLM Optimizer functionality
 
 llm-optimizer is a Python tool for benchmarking and optimizing inference performance of any open-source LLMs.
@@ -36,8 +38,6 @@ llm-optimizer is a Python tool for benchmarking and optimizing inference perform
 
 [![Release Blog](https://img.shields.io/badge/Release_Blog-d0bfff?style=for-the-badge)](https://www.bentoml.com/blog/announcing-llm-optimizer)
 [![LLM Performance Explorer](https://img.shields.io/badge/LLM_Performance_Explorer-eefbe4?style=for-the-badge)](https://www.bentoml.com/llm-perf)
-
-Interested in optimizing disaggregated LLM inference? [👉 Contact us](https://www.bentoml.com/contact)
 
 ## Installation
 
