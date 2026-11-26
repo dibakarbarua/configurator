@@ -1,0 +1,37 @@
+name: Feature request
+description: Propose a modeling, workload, or configuration capability for Configurator.
+title: "[Feature]: "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem and proposed behavior
+      description: What decision should Configurator help you make? What should change?
+    validations:
+      required: true
+  - type: textarea
+    id: workload
+    attributes:
+      label: Workload and concurrency
+      description: Describe models, prompt/output distributions, arrival rates, concurrency, agent branches, and tool calls as relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: hierarchy
+    attributes:
+      label: Hardware, hierarchy, and scale
+      description: Identify devices, memory tiers, interconnects, node counts, and the bottlenecks to model. State unknowns explicitly.
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Acceptance criteria and validation
+      description: Give a concrete input/output example, units, assumptions, and a benchmark or reference to check the prediction against.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Alternatives, related issues, measurements, or implementation ideas.

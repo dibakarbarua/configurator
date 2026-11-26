@@ -1,4 +1,30 @@
-# LLM Optimizer
+# Configurator
+
+A hierarchical, scale-friendly configuration and roofline analysis tool for
+multi-distributional concurrency in agentic workloads.
+
+Configurator starts from [BentoML's LLM Optimizer](https://github.com/bentoml/llm-optimizer)
+and [dibakarbarua's fork](https://github.com/dibakarbarua/llm-optimizer), including
+the GPU specification and SIMT throughput extensions. The existing benchmarking
+and estimation tools are the starting point; hierarchical modeling and agentic
+workload support are planned extensions, not implemented capabilities.
+
+## Feature requests
+
+[Open a feature request](https://github.com/dibakarbarua/configurator/issues/new?template=feature_request.yml)
+to propose the next modeling capability. Include the workload, hardware and scale,
+expected behavior, and a measurable validation case. Intended directions include:
+
+- Rooflines across compute, memory hierarchy, device interconnects, and cluster networks.
+- Agent workflows with multiple models, tool calls, branching, and workload distributions.
+- Concurrency, scheduling, and configuration analysis from one device to multiple nodes.
+- Explicit units, assumptions, calibration data, and uncertainty in predictions.
+
+The Python package and CLI remain named `llm-optimizer`. The imported code retains
+its [Apache-2.0 license](LICENSE) and upstream attribution. Both the imported fork's
+history and Configurator's initial repository commit are retained.
+
+## Existing LLM Optimizer functionality
 
 llm-optimizer is a Python tool for benchmarking and optimizing inference performance of any open-source LLMs.
 
@@ -232,8 +258,8 @@ If you have any questions, feel free to reach out and [join our community forum]
 
 As an open-source project, we welcome contributions of all kinds, such as new features, bug fixes, and documentation. Here are some of the ways to contribute:
 
-- Repost a bug by [creating a GitHub issue](https://github.com/bentoml/llm-optimizer/issues/new/choose).
-- [Submit a pull request](https://github.com/bentoml/llm-optimizer/compare) or help review other developers’ [pull requests](https://github.com/bentoml/llm-optimizer/pulls).
+- Report a bug or request a feature by [creating a GitHub issue](https://github.com/dibakarbarua/configurator/issues/new/choose).
+- [Submit a pull request](https://github.com/dibakarbarua/configurator/compare) or help review other developers’ [pull requests](https://github.com/dibakarbarua/configurator/pulls).
 
 
 ## Acknowledgements
