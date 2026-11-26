@@ -84,21 +84,4 @@ simt = specs["SIMT"]
         },
     },
 }
-
-# Convert an isolated FP32 FMA workload into an ideal throughput-based time:
-fma_flops = 1_000_000_000  # 1 GFLOP; multiply and add already counted separately
-rate = simt["TeraOpsPerSecond"]["fp32"]["FMA"]
-time_ms = fma_flops / (rate * 1e9)  # approximately 0.01495 ms
 ```
-
-- `SM_Clock_MHz` supplies the clock used to convert per-cycle rates to per-second rates;
-  `Clock_Basis` records where that assumption came from.
-- `OpsPerSMCycle` describes one SM; `TeraOpsPerSecond` describes one entire GPU.
-  For FP32 FMA, `256 * 132 * 1980 / 10^6 = 66.90816 TFLOP/s`.
-- Precision keys describe the SIMT instruction format. `fp16x2` and `bf16x2` count
-  individual elements in packed pairs, while conversion keys describe directional
-  format conversions.
-- A rate of `None` means the ceiling is unspecified; check for it before dividing.
-- The example time assumes the isolated operation sustains its ceiling. Memory traffic,
-  dependencies, occupancy, launch overhead, and shared execution resources must be
-  accounted for separately when estimating a complete kernel.
